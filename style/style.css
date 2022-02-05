@@ -1,0 +1,104 @@
+.text {
+  text-align: center;
+  color: black;
+  font-family: 'Bebas-Neue', sans-serif;
+}
+
+.images {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+
+#profile-pic {
+  position: relative;
+  z-index: 2;
+  transition: transform 1s ease-in-out;
+}
+
+#container:hover #profile-pic{
+  transform: translate(100%);
+}
+
+#container:hover #uclai {
+  animation: reveal 2s;
+  transform: translate(-10%);
+  opacity: 100%;
+}
+
+#container:hover #uclphy {
+  animation: reveal 2s;
+  transform: translate(-120%);
+  opacity: 100%;
+}
+
+@keyframes reveal {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+#uclai {
+  opacity: 0%;
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  position: absolute;
+  animation: 1s ease-in;
+  transition: transform 1s ease-in-out;
+  top: 40%;
+  left: 45%;
+}
+
+#uclphy {
+  opacity: 0%;
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  position: absolute;
+  animation: 1s ease-in;
+  transition: transform 1s ease-in-out;
+  top: 40%;
+  left: 45%;
+}
+
+#paragraph {
+  background-color: white;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  padding: 50px 50px 50px 50px;
+  box-shadow: 15px 15px grey;
+}
+
+#main-title {
+  font-size: 100px;
+  background-clip: text;
+  animation: color-change 15s linear 0s infinite alternate;
+  margin-bottom: -10px;
+}
+
+#headline {
+  font-size: 14px;
+  background-clip: text;
+  animation: color-change 15s linear 0.2s infinite alternate;
+  margin-bottom: 50px;
+}
+
+@keyframes color-change {
+  12% {color: #1391F0}
+  20% {color: #DC1C5F}
+  35% {color: #B805E4}
+  55% {color: #1391F0}
+  60% {color: #1391F0}
+  70% {color: #f72e25}
+  80% {color: #f79725}
+  90% {color: #DC1C5F}
+}
+
+#backdrop {
+  background-color: black;
+}
