@@ -41,23 +41,24 @@
 }
 
 #uclai {
-  opacity: 0%;
   width: 200px;
   height: auto;
   border-radius: 50%;
-  position: absolute;
+  position: relative;
   animation: 1s ease-in;
+  margin-bottom: -17%;
   transition: transform 1s ease-in-out;
   top: 40%;
   left: 45%;
 }
 
 #uclphy {
-  opacity: 0%;
   width: 200px;
   height: auto;
   border-radius: 50%;
-  position: absolute;
+  position: relative;
+  margin-bottom: -17%;
+  margin-left: -17%;
   animation: 1s ease-in;
   transition: transform 1s ease-in-out;
   top: 40%;
