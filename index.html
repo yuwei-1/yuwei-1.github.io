@@ -7,34 +7,99 @@
 </head>
 <body id="backdrop">
     <h1 class="text" id="main-title">YUWEI ZHU</h1>
-    <h2 class="text" id="headline">3RD YEAR PHYSICS UCL | HEAD OF OUTREACH UCL ARTIFICIAL INTELLIGENCE SOCIETY | ASPIRING MACHINE LEARNING ENGINEER</h2>
+    <h2 class="text" id="headline">UCL PHYSICS GRADUATE | INCOMING UCL MSC MACHINE LEARNING STUDENT | TUTORIALS TEAM @ UCLAI SOCIETY</h2>
 
     <div id="container">
-      <img src="images/aicommittee.png" id="uclai">
-      <img src="images/physcommittee.png" id="uclphy">
-      <img src="images/yuwei.jpeg" class="images" id="profile-pic">
+      <img src="images/yuwei.jpeg" class="images">
     </div>
 
 
     <br><br>
-    <p class="text" id="paragraph">Hi, my name is Yuwei. I am a third year physics student at University College London.
-        I chose to study physics based on my love of problem-solving and mathematics. Furthermore, physics is the
-        breakdown of the inner workings of our universe, which aligns well with my method of learning - breaking new
-        concepts down to the fundamentals.
+    <p class="text paragraph">My name is Yuwei. I recently completed my BSc Physics degree at UCL with first class honours,
+      and I am looking forward to starting my MSc Machine Learning course this september.
         <br><br>
-        Physics has also provided me with several transferable skills, the most important one being the ability
-        to learn independently, and tackle complex problems using my intuition and my own research.
+        I am currently working on a number of personal projects, with the goal of improving my knowledge of full stack development,
+        computer science and machine learning.
         <br><br>
-        The next step in my career would be the completion of my education. I intend to study a Masters after I graduate from my current course.
-        The fields I am interested in are computer science, data science and machine learning.
-        <br><br>
-        Over the course of the next two years of my education, I intend to undertake 2 or more internships,
-        during which I want to learn as much as I can, while making a real impact at the company.
-        <br><br>
-        Please feel free to take a look at my <a href="https://github.com/yuwei-1" target="_blank">Github</a>,
-        <a href="https://www.linkedin.com/in/yuwei-zhu-a95954195/" target="_blank">LinkedIn</a> or browse my
-        personal projects under the "projects" tab. You can get in touch with me by
-        <a href="mailto:yuweizhu29@gmail.com">email</a> or <a href="tel:+44 7516679248">mobile</a>.
+        Please feel free to browse through my personal projects below, or take a look at my
+        <a href="https://github.com/yuwei-1" target="_blank">Github</a> and
+        <a href="https://www.linkedin.com/in/yuwei-zhu-a95954195/" target="_blank">LinkedIn</a>.
+         You can get in touch with me by <a href="mailto:yuweizhu29@gmail.com">email</a>.
     </p>
+
+    <div class="center project">
+      <button type="button" class="collapsible text">Login App</button>
+
+      <div class="hidden project">
+
+        <div>
+          <button type="button" class="sub-collapsible text">Background</button>
+          <p class="hidden text paragraph">Hello world</p>
+        </div>
+
+        <div>
+          <button type="button" class="sub-collapsible text">GUI</button>
+          <p class="hidden text paragraph">Hello world</p>
+        </div>
+
+        <div>
+          <button type="button" class="sub-collapsible text">2FA and Security</button>
+          <p class="hidden text paragraph">Hello world</p>
+        </div>
+
+        <div>
+          <button type="button" class="sub-collapsible text">SHA-256 Algorithm</button>
+          <p class="hidden text paragraph">Hello world</p>
+        </div>
+
+        <div>
+          <button type="button" class="sub-collapsible text">SQLite3 Database</button>
+          <p class="hidden text paragraph">Hello world</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="center project">
+      <button type="button" class="collapsible text">NoVa experiment (Computer Vision)</button>
+      <p class="hidden text paragraph">Hello world</p>
+    </div>
+
+
+    <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+
+    var coll = document.getElementsByClassName("sub-collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("sub-active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+
+
+
 </body>
 </html>

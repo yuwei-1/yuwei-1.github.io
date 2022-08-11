@@ -4,6 +4,86 @@
   font-family: 'Bebas-Neue', sans-serif;
 }
 
+.collapsible{
+  background-color: white;
+  cursor: pointer;
+  width: 70%;
+  height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  align-items: center;
+  font-size: 40px;
+  box-shadow: 10px 10px grey;
+  animation: color-change 15s linear 0s infinite alternate;
+}
+
+.sub-collapsible{
+  background-color: white;
+  cursor: pointer;
+  width: 65%;
+  margin-left: 17.5%;
+  height: 50px;
+  text-align: left;
+  font-size: 20px;
+  box-shadow: 5px 5px grey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  animation: color-change 15s linear 0s infinite alternate;
+}
+
+.collapsible:after {
+  content: "\002B";
+  animation: color-change 15s linear 0s infinite alternate;
+  font-size: 40px;
+  float: right;
+}
+
+.sub-collapsible:after {
+  content: "\002B";
+  animation: color-change 15s linear 0s infinite alternate;
+  font-size: 20px;
+  float: right;
+}
+
+.active:after {
+  content: "\002D";
+  animation: color-change 15s linear 0s infinite alternate;
+  font-size: 40px;
+  float: right;
+}
+
+.sub-active:after {
+  content: "\002D";
+  animation: color-change 15s linear 0s infinite alternate;
+  font-size: 20px;
+  float: right;
+}
+
+.project {
+  display: flex;
+  row-gap: 10px;
+}
+
+.sub-collapsible:hover, .collapsible:hover {
+  background-color: grey;
+}
+
+.hidden {
+  display: none;
+  overflow: hidden;
+}
+
+.paragraph {
+  background-color: white;
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  padding: 50px 50px 50px 50px;
+  box-shadow: 10px 10px grey;
+}
+
 .images {
   width: 300px;
   height: auto;
@@ -11,6 +91,14 @@
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 20px;
+  justify-content: center;
+  padding-bottom: 20px;
 }
 
 #profile-pic {
@@ -65,15 +153,6 @@
   left: 45%;
 }
 
-#paragraph {
-  background-color: white;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 100px;
-  padding: 50px 50px 50px 50px;
-  box-shadow: 15px 15px grey;
-}
 
 #main-title {
   font-size: 100px;
