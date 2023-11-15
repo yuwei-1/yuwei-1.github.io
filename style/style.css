@@ -4,6 +4,10 @@
   font-family: 'Bebas-Neue', sans-serif;
 }
 
+.navbar{
+  background-color: white;
+}
+
 .collapsible{
   background-color: white;
   cursor: pointer;
