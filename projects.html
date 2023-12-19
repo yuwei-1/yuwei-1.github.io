@@ -16,21 +16,27 @@
       <button type="button" class="collapsible text">Reinforcement Learning for Market Prediction</button>
       <div class="hidden project">
         <div>
-          <button type="button" class="sub-collapsible text">Background</button>
+          <button type="button" class="sub-collapsible text">Initial Work</button>
           <p class="hidden text paragraph">
             One possible strategy for trading the financial markets is using deep reinforcement learning, and frame the
             trading task as a game, where the agent collects rewards for good trades and negative rewards for bad trades.
             This particular personal project does a deep dive into common reinforcement learning strategies, before
             applying them to the stock market.
             <br></br>
-            For the testing environment for this project, we use the famous cartpole game provided by OpenAI Gym/Gymnasium.
+            For the testing environment for this project, we use the well known cartpole game provided by OpenAI Gym/Gymnasium.
             <br></br>
             <img src="images/dqn/env.png" class="images">
             <br></br>
-            We will be testing three variants of a Qlearning agent, namely DQN, Double DQN and DynaQ learning. We will be
-            testing the efficacy of these models on the aforementioned environment, before eventually moving to predicting optimal trades.
+            We will be utilizing the Q-learning algorithm, which is an off-policy algorithm (which means it chooses actions in 
+            a different manner compared to the policy the agent is trying to learn) which uses a temporal difference TD(0) update.
+            When using a neural network to approximate the action-value function (usually denoted with Q(s,a)), the network is 
+            commonly referred to as DQN. The DQN can be augmented in certain ways to produce other variants which can excel under
+            certain circumstances; namely Double DQN and DynaQ learning. We will be testing the efficacy of these models on the 
+            aforementioned environment, before eventually moving to predicting optimal trades.
             <br></br>
-            The code used in this project can be found <a href="https://github.com/yuwei-1/Market-Prediction-Research" target="_blank">here</a>.
+            The code used in this project can be found <a href="https://github.com/yuwei-1/Market-Prediction-Research" target="_blank">here</a>. 
+            Included in the repository is a full set of python unittests which check basic functionality of each of the implemented models to ensure
+            that the model is working as intended.
             <br></br>
             The DQN itself is a very powerful model which was demonstrated to play many Atari games with good results and even achieving super human play
             in some games. The Q-learning algorithm can be applied to both tabular and continuous environments, by estimating a value for each possible
@@ -61,6 +67,12 @@
             <br></br>
             <img src="images/dqn/ddqn_gelu_cartpolev1.png" class="images">
             <br></br>
+          </p>
+        </div>
+        <div>
+          <button type="button" class="sub-collapsible text">Trading Stocks</button>
+          <p class="hidden text paragraph">
+            Coming Soon
           </p>
         </div>
       </div>
