@@ -31,8 +31,10 @@
             a different manner compared to the policy the agent is trying to learn) which uses a temporal difference TD(0) update.
             When using a neural network to approximate the action-value function (usually denoted with Q(s,a)), the network is 
             commonly referred to as DQN. The DQN can be augmented in certain ways to produce other variants which can excel under
-            certain circumstances; namely Double DQN and DynaQ learning. We will be testing the efficacy of these models on the 
-            aforementioned environment, before eventually moving to predicting optimal trades.
+            certain circumstances; namely Double DQN and DynaQ learning.
+            
+            We will be testing the efficacy of these models on the 
+            aforementioned environment, before eventually moving to predicting optimal trades. 
             <br></br>
             The code used in this project can be found <a href="https://github.com/yuwei-1/Market-Prediction-Research" target="_blank">here</a>. 
             Included in the repository is a full set of python unittests which check basic functionality of each of the implemented models to ensure
@@ -42,7 +44,9 @@
             in some games. The Q-learning algorithm can be applied to both tabular and continuous environments, by estimating a value for each possible
             action and state combo. The Q-learning update is mathematically proven to converge to the optimal policy under certain conditions; namely that
             each state can be visited an infinite number of times. However, as we can only train for finite time periods, sometimes the Q-learning agent
-            can get stuck in a local minima, and one commonly known issue is overestimation.
+            can get stuck in a local minima, and one commonly known issue is overestimation. The algorithm for DQN is shown below:
+            <br></br>
+            <img src="images/dqn/dqn_algorithm.png" class="images">
             <br></br>
             Here we show the reward versus time plots for the DQN itself, and it can be seen that the model is highly unstable and struggles to reach
             the optimal policy, even after 5000 episodes of training.
@@ -51,9 +55,11 @@
             <br></br>
             <img src="images/dqn/single_dqn_cartpole_ours.png" class="images">
             <br></br>
-            The next model we analyse is the Double DQN, which is simply two DQNs, one is updated as normal, whereas the other DQN, named the 
-            target network, is periodically updated to match the original network. Another caveat is that the target network is used in place
-            of the original network for the value action function for the next state. Additionally, we experiment with hard and soft updates.
+            We can augment the DQN model such that we duplicate the Q-network to form a policy network and a target network. The intuition behind this 
+            construction is to mitigate the "moving target" problem. By fixing the one network and updating the other, we can fix the policy while updating
+            which makes the training much more stable. Obviously the fixed network prediction will be bad initially, but it is updated periodically to match
+            the network that is being updated. Additionally, we experiment with hard and soft updates, which are complete updates at intervals, or small 
+            interpolations at each time step.
             <br></br>
             <img src="images/dqn/double_dqn_hard_cartpole_ours.png" class="images">
             <br></br>
@@ -67,12 +73,42 @@
             <br></br>
             <img src="images/dqn/ddqn_gelu_cartpolev1.png" class="images">
             <br></br>
+            Finally, we test the performance of the DynaDQN algorithm. This is another augmentation of the DQN algorithm, where this time we 
+            simultaneously build a model of the environment internally, which we can use to plan ahead. What this means is past observations are used 
+            to train an internal world model which tries to learn - in this case - a mapping from (state, action) to next state, reward. By doing this, we
+            can condense our past knowledge into a model which can be used to generate additional fabricated observations which can be used to supplement 
+            actual observations. Every training step that uses these generated observations are called planning steps, and in general, this allows the DynaDQN
+            to learn the optimal policy from fewer interactions with the environment. This can be useful when interactions with the world is costly. For the world 
+            model we use a random forest regressor.
+            <br></br>
+            <img src="images/dqn/dyna_dqn_algorithm.png" class="images">
+            <br></br>
+            Using 3 planning steps for each actual observation, we can observe that the DynaDQN algorithm training appears more stable and converges to the 
+            optimal policy in less episodes compared to the DQN. Note that the "quality" of such fabricated observations are lower than actual observations. So 
+            it is important to ensure that not too many planning steps are used as this can overestimate the value of certain actions.
+            <br></br>
+            <img src="images/dqn/dyna_random_forest_planning_3_gelu.png" class="images">
+            <br></br>
+            The last model I implemented is the dyna Q+ algorithm, which records the last time an action was chosen in a particular state, and uses this to 
+            encourage exploration over time of under trialled actions. This is especially powerful for changing environments as the algorithm is 
+            more inclined to explore new actions if they haven't been used in a while. For this particular task, there are no great advantages, and in fact 
+            the extra exploration actually makes it more difficult for the algorithm to converge on the optimal policy.
           </p>
         </div>
         <div>
           <button type="button" class="sub-collapsible text">Trading Stocks</button>
           <p class="hidden text paragraph">
-            Coming Soon
+            For Trading stocks, the DQN algorithm was trialled using the gym trading environment. These environments use the exact same methods as the regular 
+            gym environments, but use a user defined dataframe which contains price information of a particular stock. For this task, the data is preprocessed to 
+            include information on some of the most common financial indicators, such as simple moving averages, exponential moving averages, RSI and the MACD. These 
+            are presented alongside price information to the agent, which returns either 1 for buy, 0 for neutral position and -1 for sell. Using the premade 
+            gym environment makes it easy to train on multiple stocks. In this example we try training a DQN algorithm on AAPL, AMZN and GOOG stock prices for the last 
+            1000 days or roughly three years. The results show that it is not trivial to use a RL agent to trade on regular price data. The quality of the data, the changing 
+            distribution of data, as well as the low signal to noise ratio makes it very difficult to ascertain any concrete patterns in the data. We can see that over time 
+            as the model trains, the performance (portfolio returns over market) still remains very low.
+            <br></br>
+            <img src="images/dqn/portfoliovsmarketreturns.png" class="images">
+            <br></br>
           </p>
         </div>
       </div>
