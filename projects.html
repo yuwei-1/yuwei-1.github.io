@@ -169,17 +169,30 @@
               optimal policy in less episodes compared to all previous models. Note that the "quality" of such fabricated observations are lower than actual observations 
               (due to innaccuracies in the world model). So it is important to ensure that not too many planning steps are used.
               <br></br>
-              The last model I implemented is the dyna Q+ algorithm, which records the last time an action was chosen in a particular state, and uses this to 
+              The last model I implemented is the Dyna Q+ algorithm, which records the last time an action was chosen in a particular state, and uses this to 
               encourage exploration over time of under trialled actions. This is especially powerful for changing environments as the algorithm is 
-              more inclined to explore new actions if they haven't been used in a while. For this particular task, there are no great advantages, and in fact 
-              the extra exploration actually makes it more difficult for the algorithm to converge on the optimal policy.
+              more inclined to explore new actions if they haven't been used in a while. For this particular task, which uses a static environment, the extra exploration 
+              provides no additional benefit. In fact, the extra exploration of potentially bad actions means that the algorithm takes more episodes to converge to the 
+              optimal policy.
             </p>
+            <div>
+              <figure>
+                <img src="images/dqn/dyna_dqn+_planning_3.png" class="images">
+                <figcaption>
+                  Figure 11: Dyna DQN+
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
         <div>
           <button type="button" class="sub-collapsible text">Trading Stocks</button>
           <p class="hidden text paragraph">
-            For Trading stocks, the DQN algorithm was trialled using the gym trading environment. These environments use the exact same methods as the regular 
+            For Trading stocks, the DQN algorithm was trialled using the gym trading environment. We omit the discussion of any Dyna models in this section 
+            as it is well known that modelling stock data is a difficult problem, let alone predicting how each of the individual features transition (modelling
+            state to state transitions).
+            <br></br>
+            These trading gym environments use the exact same methods as the regular 
             gym environments, but use a user defined dataframe which contains price information of a particular stock. For this task, the data is preprocessed to 
             include information on some of the most common financial indicators, such as simple moving averages, exponential moving averages, RSI and the MACD. These 
             are presented alongside price information to the agent, which returns either 1 for buy, 0 for neutral position and -1 for sell. Using the premade 
