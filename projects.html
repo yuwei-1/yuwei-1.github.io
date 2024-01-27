@@ -177,7 +177,7 @@
             </p>
             <div>
               <figure>
-                <img src="images/dqn/dyna_dqn+_planning_3.png" class="images">
+                <img src="images/dqn/dyna_dqn+_planning_3.png" class="single_images">
                 <figcaption>
                   Figure 11: Dyna DQN+
                 </figcaption>
@@ -201,11 +201,147 @@
             distribution of data, as well as the low signal to noise ratio makes it very difficult to ascertain any concrete patterns in the data. We can see that over time 
             as the model trains, the performance (portfolio returns over market) still remains very low.
             <br></br>
-            <img src="images/dqn/portfoliovsmarketreturns.png" class="images">
+            <img src="images/dqn/portfoliovsmarketreturns.png" class="single_images">
             <br></br>
           </p>
         </div>
       </div>
+    </div>
+
+    <div class="center project">
+      <button type="button" class="collapsible text">Thesis: Short-Term Plasticity as an improved model of Linear Transformers</button>
+        <div class="hidden project">
+          <div>
+            <button type="button" class="sub-collapsible text">Resources</button>
+      
+            <div class="hidden text paragraph margintop">
+                <p>
+                  For this research project, I was partnered with the Huawei Neuromorphic Computing Group in Zurich. I was granted use of the Huawei Computing cluster. 
+                  Workloads were managed using Simple Linux Utility for Resource Management (SLURM). Additionally, in order to train models 
+                  overnight/long durations, it was essential to use tmux (terminal multiplexer) which kept programs running regardless of whether the local machine is 
+                  connected or not. In order to utilize the maximum potential of the nodes, it was important to become acquainted with these esoteric systems.
+                  Almost all models run in the experiments in this project were created by myself using Pytorch. Public implementations were only used where necessary to verify 
+                  my own implementation and results. This was a conscious choice to embrace every learning opportunity possible.
+                </p>
+              </div>
+
+            <button type="button" class="sub-collapsible text">Paper</button>
+      
+            <div class="hidden text paragraph margintop">
+                <p>
+                  <b>Abstract: </b>
+                  <br></br>
+                  It has long been known that Short-Term memory is a key component of the human brain, used for learning skills for one-time or periodic use. This skill is also useful 
+                  in language modelling, as oftentimes themes or topics of a corpus of text appear and reappear throughout an article, necessitating the need for the element of forgetting 
+                  in language models, which is not currently present. By utilizing ideas presented in recent works about the Short-Term Plasticity Neuron (STPN) and the Linearized Transformer, 
+                  we present a new language model, named the STPN-transformer (STPNt), which builds on the idea of the Linearized Transformer by augmenting it with learning to learn and forget. 
+                  Experimental results demonstrate the advantages of the STPNt over the Linear Transformer in limited memory settings on the Wikitext-2 dataset. Our research in this thesis begins 
+                  to demonstrate some of the potential advantages that this type of learning can provide in language modelling, to be built on in future works.
+                  <br></br>
+
+                  <b>Contributions to field: </b>
+                  <ul>
+                    <li>Propose three variants of a novel architecture named the STPNt (Short-Term Plasticity Transformer), which applies a STPN-like mechanism to the Linear Transformer attention formulation.</li>
+                    <li>Show that the STPNt model can learn proficiently and show advantages on a toy problem: The Associative Retrieval Task (ART)</li>
+                    <li>Introduce a new variant of the ART, named AdaptART, which is more complex and further differentiates the performance of models with inherent forgetting mechanisms.</li>
+                    <li>Propose a biologically plausible practical addition to the original STPN mechanism, which is shown to stabilize training and improve performance, for the Short-Term Plasticity-RNN 
+                      (STPNr) as well as our model, the STPNt.</li>
+                    <li>Show experimental results on the Wikitext-2 dataset that demonstrates that the STPNt provides advantages over the Linear Transformer in limited memory settings.</li>
+                  </ul>
+                  
+                  <br></br>
+                  <b>Summary of Results, Conclusion and Further Work: </b>
+                  <br></br>
+                  In this work, we present three models: STPNt, STPNt with context, and the STPNt-LSTM, all adapted from the linearized Transformer model. The Linear Transformer provides linear scaling complexity with 
+                  respect to sequence length, but does this by approximating the softmax activation in the Transformer, naturally leading to a performance decrease. The attention layer in the Linear Transformer maintains a 
+                  cumulative matrix which retains information from each time step. Due to the purely additive updates at each time step, the entries of this matrix increase unbounded over time, which hinders performance on 
+                  long training and evaluation sequences. The models we introduce apply the idea of fast weight programming, where certain network parameters are trained in order to modulate what information to retain and 
+                  forget at each time step. The three variants propose three different methods of modulation:
+
+                  <ul>
+                    <li>The STPNt modulates in a constant manner. This network learns a constant decay parameter which applies at every time step. Therefore, this model learns an effective context window from the training data. 
+                      We refer to this model as the STPNt or basic STPNt.</li>
+                    <li>The STPNt with context modulates based on the current token only. Thus, this model learns which specific tokens are more or less useful, as well as particular tokens that may indicate the start of a new 
+                      topic where the model could reset its current state.</li>
+                    <li>The STPNt-LSTM utilizes a LSTM cell, which collates contextual information over many time steps, and utilizes the output of this cell to determine suitable checkpoints to reset its context, as well as determine 
+                      which tokens are more or less useful based on past context.</li>
+                  </ul>
+                  Since the both the Linear Transformer and STPNt variants approximates the Transformer attention, there is an inherent decrease in performance. For this reason, in our results, we mostly keep the discussion between 
+                  our models and the Linear Transformer instead of comparing with the Transformer itself.
+                </p>
+                <div>
+                  <figure>
+                    <img src="images/thesis/summary.png" class="single_images">
+                    <figcaption>
+                      Figure 1: (Left half): Toy problem results; Associative Retrieval Task with replacement, (Top Right): Toy problem results; Adaptive ART, (Bottom Right): War and Peace results.
+                    </figcaption>
+                  </figure>
+                </div>
+                <p>
+                  Experimentation was conducted on several toy problems and two datasets: the novel War and Peace, and the language modelling dataset Wikitext-2. In the toy problem, the basic 
+                  STPNt and STPNt with context were benchmarked against similar models in the literature, as well as the Transformer and Linear Transformer. The results presented in fig. 1 show that the STPNt outperforms the majority 
+                  of models on both tasks, but performs worse on the toy problem designed to better mimic retrieval in a natural language context. The STPNt with context was introduced here, and showed superior performance to the basic STPNt. 
+                  This discussion was extended to a language corpus, the War and Peace novel, which recapitulated the importance of context, with the contextual STPNt greatly outperforming the basic model. The experimentation on War and Peace 
+                  also revealed another insight: stacking STPNt attention blocks caused training instabilities - instead we discovered that the optimal network architecture involved a single STPNt block stacked with Linear Transformer blocks. 
+                  Finally, experimentation was conducted using the Wikitext-2 dataset, where we also introduced the final model variant: STPNt-LSTM.
+                </p>
+                <div>
+                  <figure>
+                    <img src="images/thesis/testpplseq.png" class="single_images">
+                    <figcaption>
+                      Figure 2: Test perplexities for different sequence lengths of training and evaluation
+                    </figcaption>
+                  </figure>
+                </div>
+                <p>
+                  During these experiments, we varied the training and evaluation sequence lengths, and compared the perplexity of the trained models on the test set, shown in figure 3. Surprisingly, the STPNt with context 
+                  did not provide much benefit over the Linear Transformer, and in fact showed signs of overfitting; lower validation perplexity than the Linear Transformer but higher test perplexity. Nonetheless, the STPNt with context did 
+                  outperform on sequence lengths beyond 256, and this could be an avenue for further work. The STPNt-LSTM yielded much more positive results: consistently lower training and validation perplexity compared to the Linear Transformer, 
+                  and demonstrated the ability to utilize longer sequence lengths compared to the Linear Transformer and even the Transformer itself. In fact, the STPNt-LSTM was the only model to achieve a test perplexity improvement from increasing 
+                  the sequence length from 64 to 128. Knowing that the LSTM cell endows the model with the ability to learn longer sequences, future work could explore the use of an even larger cell state, to see if this could improve things further.
+                </p>
+                <div>
+                  <figure>
+                    <img src="images/thesis/ppl_results_table.png" class="single_images">
+                    <figcaption>
+                      Figure 3: Wikitext-2 best test and validation perplexities for different training/evaluation sequence lengths
+                    </figcaption>
+                  </figure>
+                </div>
+                <p>
+                  <b>Plastic Parameter Analysis: </b>
+                  <br></br>
+                  We try to analyse what the STPNt-LSTM is learning by understanding what plastic parameters (lambda, gamma) the model uses when evaluating a a short sequence of text. We include this section to help improve the interpretability of the model, 
+                  in the same vein as work done by Kaparthy et al. Using some sample text, we compare the lambda (assigned to modulate the impact of the previous information) 
+                  and gamma (modulates the impact of current token) for each token in the sequence.
+                </p>
+                <div>
+                  <figure>
+                    <img src="images/thesis/plasticparams.png" class="single_images">
+                    <figcaption>
+                      Figure 4: Analysis of STPNt-LSTM weights
+                    </figcaption>
+                  </figure>
+                </div>
+                <p>
+                  Through analyzing the results, shown in fig. 4, we see that in fact the lambda parameters are almost unused; for most timesteps, the value of lambda is very close to one, which indicates an incredibly slow decay rate, 
+                  which allows for long context. The model does not reset the sequence at any point, but since the sequence is only 128 tokens long, additional analysis needs to be done on longer text, specifically between different topics and articles. 
+                  One token that seems to encourage more forgetting of the past are quotation marks, shown by the small dips in the lambda graph. What is more surprising is the model's use of gamma parameters. Here we see that the tokens that the model retains 
+                  the most correspond to tokens such as full stops, "in", "as" which are words that appear generally in text, not providing much information about the subsequent tokens. This may be the case due to the small dataset size of Wikitext-2. The model 
+                  may not have encountered some words such as names - "Josh" many times, thus not encoding much information in the embeddings of those words, rendering them less useful. However, this is just conjecture, and more work must be done, training on 
+                  larger corpuses, such as Wikitext, or the 1 billion words corpus.
+                  <br></br>
+                  We finish our summary by noting several avenues for the continuation of the work in this thesis. Firstly, the models used in the experiments are relatively small compared to those in the literature, and the performance statistics listed 
+                  are far from being state-of-the-art, even among non pre-trained models. Thus, one important next step would be to scale up our models, preferably to around 24M trainable parameters which is comparable to the literature, and incorporate 
+                  any important regularization techniques. This will be crucial for determining whether our model can truly deliver some benefit. Furthermore, it was discovered upon examining our models parameters during evaluation that the STPNt-LSTM is 
+                  learning some counter-intuitive properties of the data, and further work should be done training it on larger language corpuses to explore the consequences of this. Finally, by changing our embedding scheme to a relative one, we could 
+                  utilize a "cache" during evaluation time, and this could have interesting effects on the STPNt performance.
+                </p>
+
+              </div>
+          
+          </div>
+        </div>
     </div>
   
     <div class="center project">
