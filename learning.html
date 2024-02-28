@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <meta charset="UTF-8">
+    <div class="navbar">
+      <a href="index.html" target="_self">Home</a>
+      <a href="projects.html" target="_self">Projects</a>
+      <a href="learning.html" target="_self">Learning</a>
+    </div>
+    <title>Yuwei Zhu</title>
+</head>
+
+<body id="backdrop">
+  <h1 class="text" id="main-title">Deep Dives</h1>
+    <div class="center project top">
+      <button type="button" class="collapsible text">Spectral Clustering</button>
+      <div class="hidden project">
+        <div>
+          <button type="button" class="sub-collapsible text">Theory</button>
+          <div class="hidden text paragraph margintop">
+           <p>Coming soon</p>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+
+    var coll = document.getElementsByClassName("sub-collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("sub-active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+
+
+
+</body>
+</html>
