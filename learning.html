@@ -36,22 +36,24 @@
             Finally, using these spectral embeddings, we can divide up the original points into a specified number of clusters, k. The most common method is to use 
             the K-means algorithm on the embeddings.
            </p>
-           <div class="row">
-            <div class="column">
-              <figure>
-                <img src="images/nnk10.png" class="images">
-                <figcaption>
-                  Figure 1: knn adjacency values for k=10 (point 9)
-                </figcaption>
-              </figure>
-            </div>
-            <div class="column">
-              <figure>
-                <img src="images/rbf_adj.png" class="images">
-                <figcaption>
-                  Figure 2: RBF adjacency distance values (point 9)
-                </figcaption>
-              </figure>
+
+            <div class="row">
+              <div class="column">
+                <figure>
+                  <img src="images/nnk10.png" class="images">
+                  <figcaption>
+                    Figure 1: knn adjacency values for k=10 (point 9)
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column">
+                <figure>
+                  <img src="images/rbf_adj.png" class="images">
+                  <figcaption>
+                    Figure 2: RBF adjacency distance values (point 9)
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
@@ -65,43 +67,189 @@
             which is erroneously assigned to the wrong class due to its proximity to the tip of the other crescent. This is unsurprising, as by using nearest neighbours, we are 
             essentially dropping important information about the n - k other nodes.
            </p>
-           <div class="row">
-            <div class="column">
-              <figure>
-                <img src="images/knnspectral_simple.png" class="images">
-                <figcaption>
-                  Figure 3: knn spectral clustering for easy problem
-                </figcaption>
-              </figure>
+            <div class="row">
+              <div class="column">
+                <figure>
+                  <img src="images/knnspectral_simple.png" class="images">
+                  <figcaption>
+                    Figure 3: knn spectral clustering for easy problem
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column">
+                <figure>
+                  <img src="images/rbf_spectral_simple.png" class="images">
+                  <figcaption>
+                    Figure 4: RBF kernel spectral clustering for easy problem
+                  </figcaption>
+                </figure>
+              </div>
             </div>
-            <div class="column">
-              <figure>
-                <img src="images/rbf_spectral_simple.png" class="images">
-                <figcaption>
-                  Figure 4: RBF kernel spectral clustering for easy problem
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <figure>
-                <img src="images/knn_spectral_hard.png" class="images">
-                <figcaption>
-                  Figure 5: knn spectral clustering for hard problem
-                </figcaption>
-              </figure>
-            </div>
-            <div class="column">
-              <figure>
-                <img src="images/rbf_spectral_hard.png" class="images">
-                <figcaption>
-                  Figure 6: RBF kernel spectral clustering for hard problem
-                </figcaption>
-              </figure>
+            <div class="row">
+              <div class="column">
+                <figure>
+                  <img src="images/knn_spectral_hard.png" class="images">
+                  <figcaption>
+                    Figure 5: knn spectral clustering for hard problem
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column">
+                <figure>
+                  <img src="images/rbf_spectral_hard.png" class="images">
+                  <figcaption>
+                    Figure 6: RBF kernel spectral clustering for hard problem
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="center project">
+      <button type="button" class="collapsible text">Markov Chain Monte Carlo (MCMC)</button>
+      <div class="hidden project">
+        <div>
+          <button type="button" class="sub-collapsible text">Background</button>
+          <p class="hidden text paragraph">Coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center project">
+      <button type="button" class="collapsible text">Maximum Likelihood Estimation</button>
+      <div class="hidden project">
+        <div>
+          <button type="button" class="sub-collapsible text">Background</button>
+          <div class="hidden text paragraph margintop">
+           <p>Maximum likelihood estimation (MLE) is a frequentist approach to inferring model parameters from a dataset. Firstly, we assume that data has been drawn from a particular distribution. This 
+            choice of distribution is key as it can bias the results or provide a bad fit. Using the chosen distribution, we then require some observations/data through experimentation or using 
+            historical data. Distributions are often characterized by certain model parameters, such as the standard deviation and mean for the normal distribution. Assuming an arbitrary set of parameters, 
+            we can find an expression for the total likelihood of having observed our dataset. Using this expression, the next step is to find the "most likely" set of 
+            parameters by maximizing the likelihood expression for each of the parameters (differentiating and setting to zero).
+            
+            Below are some screenshots from a Jupyter notebook I created, which works through the basic application of maximum likelihood estimation for a univariate normal distribution, where we generate points using 
+            a normal distribution with known parameters and attempt to fit another normal distribution using the outlined MLE methodology.
+
+            <br></br>
+            <img src="images/mle1.png" class="single_images">
+            <br></br>
+            <img src="images/mle2.png" class="single_images">
+            <br></br>
+            After progressively more observations, we can see that the estimated parameters from MLE approaches the true underlying distribution.
+           </p>
+
+           <div class="row">
+            <div class="column">
+              <figure>
+                <img src="images/5obs_mle.png" class="images">
+                <figcaption>
+                  Figure 3: ML estimated distribution after 5 observations
+                </figcaption>
+              </figure>
+            </div>
+            <div class="column">
+              <figure>
+                <img src="images/50obs_mle.png" class="images">
+                <figcaption>
+                  Figure 4: ML estimated distribution after 5 observations
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <figure>
+                <img src="images/1000obs_mle.png" class="images">
+                <figcaption>
+                  Figure 3: ML estimated distribution after 1000 observations
+                </figcaption>
+              </figure>
+            </div>
+            <div class="column">
+              <figure>
+                <img src="images/mle_distance.png" class="images">
+                <figcaption>
+                  Figure 4: Root total squared deviation of MLE parameters from truth with progressively more observations
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+           
+
+          </div>
+        </div>
+
+        <div>
+          <button type="button" class="sub-collapsible text">Application to my research</button>
+          <div class="hidden text paragraph margintop">
+            <p>
+              For my research into continuous temporal network analysis, one common model that I have to do parameter fitting for is a Hawkes process, a bursty point process. This 
+              particular model assumes self-exciting events, which means an event instantaneously increases the probability of another event occurring after, decaying over time. For this 
+              model, we follow the same framework as for the normal distribution, with the caveat that we can no longer analytically solve the maximum likelihood estimator due to the 
+              expressions being non-linear. In this case we can employ non-linear optimization methods, such as Newton-Raphson, Powell or LBGS. Again, I provide screenshots of the 
+              derivations.
+              
+              <br></br>
+              <img src="images/hp_mle.png" class="single_images">
+              <br></br>
+              
+              There are various different methods for non-linear optimization. Some methods will require the further derivations of the gradient with respect to each parameter, and some 
+              even require the hessian matrix for optimization. For simplicity, we use the Nelder-Mead algorithm which only requires the functional value of the log likelihood 
+              at each iteration. We utilise the scipy optimize library to run the optimization and we use the <a href="https://github.com/omitakahiro/Hawkes/" target="_blank">Hawkes</a> library 
+              created by Omita Kahiro to simulate data generated from a hawkes process. Unlike the normal distribution, instead of providing more observations, we instead run the simulation for 
+              longer periods, allowing the model more events to learn the process dynamics from. We use an underlying hawkes process with mu equal to 0.5, alpha equal to 0.8, and beta equal to 1.
+              These correspond to the baseline rate, jump size and decay strength respectively.
+
+            </p>
+              <div class="row">
+                <div class="column">
+                  <figure>
+                    <img src="images/hp_t100.png" class="images">
+                    <figcaption>
+                      Figure 1: Hawkes process generated for 100 times steps
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="column">
+                  <figure>
+                    <img src="images/hp_t1000.png" class="images">
+                    <figcaption>
+                      Figure 2: Hawkes process generated for 1000 times steps
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <figure>
+                    <img src="images/hp_t2000.png" class="images">
+                    <figcaption>
+                      Figure 3: Hawkes process generated for 2000 times steps
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="column">
+                  <figure>
+                    <img src="images/deviation_hp.png" class="images">
+                    <figcaption>
+                      Figure 4: Root total squared deviation of MLE parameters from truth with progressively longer simulations
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+              <p>
+                As we can see, the trend in deviation of the parameters is less pronounced here, and it seems somewhere between a simulation of 100 to 500 there was a sharp increase in 
+                estimation accuracy, hence the drop in deviations. We also notice that the simulations must be quite high variance, as we see a small increase in deviation from 
+                500 time steps to 1000. This is indeed the case as one event occurring can impact the rest of the simulated time period, leading to drastically different patterns of events 
+                for the same hawkes model with same parameters.
+              </p>
+          </div>
+          
       </div>
     </div>
 
